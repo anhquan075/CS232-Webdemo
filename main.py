@@ -37,11 +37,10 @@ def upload_image():
 	if file.filename == '':
 		flash('No image selected for uploading', 'warning')
 		return redirect(request.url)
-
 	if file and allowed_file(file.filename):
 		filename = secure_filename(file.filename)
 		file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-		print('upload_image filename: ' + filename)
+		#print('upload_image filename: ' + filename)
 		flash('Image successfully uploaded and displayed below', 'success')
 		compressImage(os.path.join(app.config['UPLOAD_FOLDER'], filename), clusters=int(get_k_value()))
 		return render_template('upload.html', filename=filename)
@@ -51,7 +50,7 @@ def upload_image():
 
 @app.route('/display/<filename>')
 def display_image(filename):
-	print('Display_image filename: ' + filename)
+	#print('Display_image filename: ' + filename)
 	return redirect(url_for('static', filename='upload/' + 'compressed_' + str(get_k_value()) + '_bitmap.bmp'), code=301)
 
 if __name__ == "__main__":

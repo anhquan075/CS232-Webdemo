@@ -1,58 +1,54 @@
 <!doctype html>
+
 <head>
-	{% block head %}
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block head %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> {% block styles %}
+    <!-- Bootstrap CSS -->
+    {{ bootstrap.load_css() }} {% endblock %}
 
-	{% block styles %}
-		<!-- Bootstrap CSS -->
-		{{ bootstrap.load_css() }}
-	{% endblock %}
-
-	<title>CS232 Project</title>
-	<link rel="shortcut icon" href="static/icon/logo.png" type="image/x-icon">
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
-	{% endblock %}
+    <title>CS232 Project</title>
+    <link rel="shortcut icon" href="static/icon/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css"> {% endblock %}
 </head>
+
 <body>
-	<nav class="navbar navbar-dark bg-dark">
-		<span class="navbar-brand mb-0 h1"><h2>CS232 - Image Compression with K-means</h2></span>
-	</nav>
+    <nav class="navbar navbar-dark bg-dark">
+        <span class="navbar-brand mb-0 h1"><h2>CS232 - Image Compression with K-means</h2></span>
+    </nav>
 
-	<form method="post" action="/" enctype="multipart/form-data" >
-		<p>
-			<label for="avatar"><h4>Select an image to upload and display:</h4></label>
-			<input class="form-control mr-sm-2" type="file" name="file" autocomplete="off" required>
-		</p>
+    <form method="post" action="/" enctype="multipart/form-data">
+        <p>
+            <label for="avatar"><h4>Select an image to upload and display:</h4></label>
+            <input class="" type="file" name="file" autocomplete="off" required>
+        </p>
 
-		<p>
-			<label for="vol">k Number (between 1 and 16):</label>
-			<input type="range" id="vol" name="k_value" value="k_value" min="1" max="16" oninput="this.nextElementSibling.value = this.value">
-			<output>8</output>
-		</p>
-		<p>
-			<input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Submit">
-		</p>
-	</form>
+        <p>
+            <label for="vol">k Number (between 1 and 16):</label>
+            <input type="range" id="vol" name="k_value" value="k_value" min="1" max="16" oninput="this.nextElementSibling.value = this.value">
+            <output>8</output>
+        </p>
+        <p>
+            <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Submit">
+        </p>
+    </form>
 
-	<p>
-		{% with messages = get_flashed_messages(with_categories=true) %}
-		  {% if messages %}
-			<ul class=flashes>
-			{% for category, message in messages %}
-				<div class="alert alert-{{ category }}"> 
-					<strong>INFO!: </strong>{{ message }}
-				</div>
-			{% endfor %}
-			</ul>
-		  {% endif %}
-		{% endwith %}
-	</p>
-	{% if filename %}
-		<div>
-			<img src="{{ url_for('display_image', filename=filename) }}">
-		</div>
-	{% endif %}
+    <p>
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %}
+        <ul class=flashes>
+            {% for category, message in messages %}
+            <div class="alert w-25 alert-{{ category }}">
+                <strong>INFO!: </strong>{{ message }}
+            </div>
+            {% endfor %}
+        </ul>
+        {% endif %} {% endwith %}
+    </p>
+    {% if filename %}
+    <div style="padding:20px">
+        <img src="{{ url_for('display_image', filename=filename) }}">
+    </div>
+    {% endif %}
 
 </body>
