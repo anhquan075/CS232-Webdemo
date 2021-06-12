@@ -108,6 +108,6 @@ def compress_image(means, index, img, clusters):
 
   
     # saving the compressed image.
-    cv2.imsave('compressed_' + str(clusters) + '_bitmap.bmp', recovered)
+    cv2.imwrite('compressed_' + str(clusters) + '_bitmap.bmp', recovered)
   
 
