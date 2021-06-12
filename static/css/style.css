@@ -1,3 +1,4 @@
-.alert {
-    margin: 0;
+.alert-dismissible {
+    margin-right: 100px;
+    padding-right: 0px;
 }

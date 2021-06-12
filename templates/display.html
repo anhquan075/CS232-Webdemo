@@ -1,5 +1,4 @@
 <!doctype html>
-
 <head>
     {% block head %}
     <!-- Required meta tags -->
@@ -29,29 +28,15 @@
     </style> -->
 	{% endblock %}
 </head>
-
 <body>
-    <nav class="navbar navbar-dark bg-dark">
-        <span class="navbar-brand mb-0 h1"><h2>CS232 - Image Compression with K-means</h2></span>
-    </nav>
-
-	<form method="post" action="/" enctype="multipart/form-data" >
-		<p>
-			<label for="avatar"><h4>Select an image to upload and display:</h4>
-				<input class="form-control mr-sm-2"  style="width:400px" type="file" name="file" autocomplete="off" required>
-			</label>
-		</p>
-
-		<p>
-			<label for="vol">Choose <b>k</b> Number (between 1 and 16):</label>
-			<input type="range" id="vol" name="k_value" value="8" min="1" max="16" oninput="this.nextElementSibling.value = this.value">
-			<output>8</output>
-		</p>
-		<p>
-			<input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Submit">
-		</p>
-	</form>
-
+	<nav class="navbar navbar-dark bg-dark">
+		<span class="navbar-brand mb-0 h1"><h2>CS232 - Image Compression with K-means</h2></span>
+	</nav>
+    
+    <a href="/" class="btn btn-primary" role="button">Back to home page.
+        <!-- <button type="button" class="btn btn-default"></button> -->
+        <span class="sr-only">(current)</span>
+    </a>
 	<p>
 		{% with messages = get_flashed_messages(with_categories=true) %}
 		  {% if messages %}
@@ -66,5 +51,25 @@
 		  {% endif %}
 		{% endwith %}
 	</p>
+	{% if filename %}
+		<div class="row">
+			<div class="column">
+				<figure style="display: table;">
+					<img src="{{ url_for('display_image', filename=filename) }}" alt="Image" style="width:100%" >
+					<figcaption style="display: table-caption; caption-side: top;  text-align: center;">
+                       <h2>Fig.1 - Original Image.</h2>
+                    </figcaption>
+				</figure>
+			</div>
+			<div class="column">
+				<figure style="display: table;">
+					<img src="{{ url_for('display_image', filename=filename) }}" alt="Original Image" style="width:100%">
+					<figcaption style="display: table-caption; caption-side: top;  text-align: center;">
+                       <h2>Fig.2 - Compressed Image with {{result}} k_values</h2> 
+                    </figcaption>
+				</figure>
+			</div>
+		</div>
+	{% endif %}
 
 </body>
