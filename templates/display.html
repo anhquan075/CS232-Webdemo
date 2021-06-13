@@ -8,29 +8,18 @@
     {{ bootstrap.load_css() }} {% endblock %}
 
 	<title>CS232 Project</title>
-	<link rel="shortcut icon" href="static/icon/logo.png" type="image/x-icon">
+	<link rel="shortcut icon" href="static/icon/logo-uit.png" type="image/x-icon">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<!-- <style type="text/css">
-        figcaption {
-			background-color: rgba(79, 44, 16, 0.6);
-			height: 1.2em;
-			width: 100%;
-			margin-top: -2.4em;
-			float: right;
-			text-align: center;
-			color: white;
-			z-index: 1;
-			font-family: 'Open Sans', sans;
-		  }
-    </style> -->
 	{% endblock %}
 </head>
 <body>
-	<nav class="navbar navbar-dark bg-dark">
-		<span class="navbar-brand mb-0 h1"><h2>CS232 - Image Compression with K-means</h2></span>
+    <nav class="navbar navbar-dark bg-dark">
+		<span class="navbar-brand mb-0 h1">
+			<img src="static/icon/logo-uit.png" width="50" height="40" class="d-inline-block align-top" alt=""> CS232 - Image Compression with K-means
+        </span>
 	</nav>
     
     <a href="/" class="btn btn-primary" role="button">Back to home page.
@@ -52,10 +41,16 @@
 		{% endwith %}
 	</p>
 	{% if filename %}
+		<blockquote class="blockquote">
+			<p class="mb-0"> 
+				<b>Compression ratio: </b> {{	r_value	}}
+			</p>
+		</blockquote>
+
 		<div class="row">
 			<div class="column">
 				<figure style="display: table;">
-					<img src="{{ url_for('display_image', filename=filename) }}" alt="Original Image" style="width:100%" >
+					<img src="{{ url_for('display_image', filename=filename) }}"  alt="Original Image" style="width: 50%; height: 50%; margin-left: auto; margin-right: auto; width:100%" >
 					<figcaption style="display: table-caption; caption-side: top;  text-align: center;">
                        <h2>Fig.1 - Original Image.</h2>
                     </figcaption>
@@ -63,9 +58,9 @@
 			</div>
 			<div class="column">
 				<figure style="display: table;">
-					<img src="{{ url_for('display_image_compressed', filename=filename+'_'+result) }}" alt="Compressed Image" style="width:100%">
+					<img src="{{ url_for('display_compressed_image', filename=result) }}" class="center" alt="Compressed Image" style="width: 50%; height: 50%; margin-left: auto; margin-right: auto; width:100%">
 					<figcaption style="display: table-caption; caption-side: top;  text-align: center;">
-                       <h2>Fig.2 - Compressed Image with {{result}} k_values</h2> 
+                       <h2>Fig.2 - Recovered Image with {{	result	}} k_values</h2> 
                     </figcaption>
 				</figure>
 			</div>

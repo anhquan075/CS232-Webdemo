@@ -4,36 +4,27 @@
     {% block head %}
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> {% block styles %}
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+	{% block styles %}
     <!-- Bootstrap CSS -->
     {{ bootstrap.load_css() }} {% endblock %}
 
 	<title>CS232 Project</title>
-	<link rel="shortcut icon" href="static/icon/logo.png" type="image/x-icon">
+	<link rel="shortcut icon" href="static/icon/logo-uit.png" type="image/x-icon">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<!-- <style type="text/css">
-        figcaption {
-			background-color: rgba(79, 44, 16, 0.6);
-			height: 1.2em;
-			width: 100%;
-			margin-top: -2.4em;
-			float: right;
-			text-align: center;
-			color: white;
-			z-index: 1;
-			font-family: 'Open Sans', sans;
-		  }
-    </style> -->
+
 	{% endblock %}
 </head>
 
 <body>
     <nav class="navbar navbar-dark bg-dark">
-        <span class="navbar-brand mb-0 h1"><h2>CS232 - Image Compression with K-means</h2></span>
-    </nav>
+		<span class="navbar-brand mb-0 h1">
+			<img src="static/icon/logo-uit.png" width="50" height="40" class="d-inline-block align-top" alt=""> CS232 - Image Compression with K-means
+        </span>
+	</nav>
 
 	<form method="post" action="/" enctype="multipart/form-data" >
 		<p>
@@ -43,9 +34,9 @@
 		</p>
 
 		<p>
-			<label for="vol">Choose <b>k</b> Number (between 1 and 16):</label>
-			<input type="range" id="vol" name="k_value" value="8" min="1" max="16" oninput="this.nextElementSibling.value = this.value">
-			<output>8</output>
+			<label for="vol">Choose <b>k</b> Number (between 1 and 128):</label>
+			<input type="range" id="vol" name="k_value" value="64" min="1" max="128" oninput="this.nextElementSibling.value = this.value">
+			<output>64</output>
 		</p>
 		<p>
 			<input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Submit">
