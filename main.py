@@ -15,8 +15,7 @@ def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 def get_k_value():
-	if request.method == "POST":
-		k_value = request.form.get("k_value")
+	k_value = request.form.get("k_value")
 	return k_value
 
 def imageByteSize(img_path):
