@@ -96,7 +96,7 @@ def k_means(points, means, clusters):
     return means, index
   
   
-def compress_image(means, index, img, clusters):
+def compress_image(img_name,means, index, img, clusters):
     # recovering the compressed image by
     # assigning each pixel to its corresponding centroid.
     centroid = np.array(means)
@@ -109,6 +109,6 @@ def compress_image(means, index, img, clusters):
   
     # saving the compressed image.
 
-    cv2.imwrite('static/compressed/compressed_' + str(clusters) + '_bitmap.bmp', recovered)
+    cv2.imwrite('static/compressed/compressed_'+ img_name +'_'+ str(clusters) + '_bitmap.bmp', recovered)
   
 

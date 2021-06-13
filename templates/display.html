@@ -63,7 +63,7 @@
 			</div>
 			<div class="column">
 				<figure style="display: table;">
-					<img src="{{ url_for('display_image_compressed', filename=result) }}" alt="Compressed Image" style="width:100%">
+					<img src="{{ url_for('display_image_compressed', filename=filename+'_'+result) }}" alt="Compressed Image" style="width:100%">
 					<figcaption style="display: table-caption; caption-side: top;  text-align: center;">
                        <h2>Fig.2 - Compressed Image with {{result}} k_values</h2> 
                     </figcaption>

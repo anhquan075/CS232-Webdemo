@@ -5,6 +5,7 @@ from flask import Flask, flash, request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
 from flask import session
 from k_means_scratch import *
+import random
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'bmp'])
 
@@ -13,14 +14,13 @@ def allowed_file(filename):
 
 def compressImage(img_path, clusters=8):
 	img = read_image(img_path)
-	
+	img_name=os.path.basename(img_path)
 	points, means = initialize_means(img, clusters)
 	means, index = k_means(points, means, clusters)
-	compress_image(means, index, img, clusters)
+	compress_image(img_name,means, index, img, clusters)
 
 def get_k_value():
-	if request.method == "POST":
-		k_value = request.form.get("k_value")
+	k_value = request.form.get("k_value")
 	return k_value
 
 	
@@ -57,7 +57,7 @@ def display_image(filename):
 	return redirect(url_for('static', filename='upload/'+ filename), code=301)
 
 @app.route('/display_compressed/<filename>', methods = ['POST', 'GET'])
-def display_image_compressed(filename):
+def display_image_compressed(filename):		
 	return redirect(url_for('static',filename='compressed/'+ 'compressed_'+filename+'_bitmap.bmp'), code=301)
 
 
