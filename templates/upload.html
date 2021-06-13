@@ -15,6 +15,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 	{% endblock %}
 </head>
 
@@ -33,9 +34,9 @@
 		</p>
 
 		<p>
-			<label for="vol">Choose <b>k</b> Number (between 1 and 256):</label>
-			<input type="range" id="vol" name="k_value" value="128" min="1" max="256" oninput="this.nextElementSibling.value = this.value">
-			<output>128</output>
+			<label for="vol">Choose <b>k</b> Number (between 1 and 128):</label>
+			<input type="range" id="vol" name="k_value" value="64" min="1" max="128" oninput="this.nextElementSibling.value = this.value">
+			<output>64</output>
 		</p>
 		<p>
 			<input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Submit">
